@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Switch Pics</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div  class="d-flex flex-column justify-content-center w-100 h-100" id="images">
+	
+</div>
+
+<div>
+	<img  onclick="play()"
+	style="width: 50px;
+    height: 50px;
+    margin-top: 0;
+    margin-left: 50px;
+    cursor: pointer;
+    border: none;"
+    src="https://cdn-icons-png.flaticon.com/512/482/482640.png">
+</div>
+
+</body>
+</html>
+
+<style type="text/css">
+	img{
+	    width: 10vw;
+	    height: 20vh;
+	    margin: 20px;
+	    border-radius: 20%;
+	    border: 2px solid white;
+	}
+	
+	body {
+		background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+		background-size: 400% 400%;
+		animation: gradient 15s ease infinite;
+		height: 95vh;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+</style>
+
+<script type="text/javascript">
+	var breno = "https://scontent.fipn1-1.fna.fbcdn.net/v/t39.30808-6/245761574_106687555129636_4191611457289241469_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=r1uvqy3jLcEAX-9OhcT&_nc_ht=scontent.fipn1-1.fna&oh=00_AT9bz6bPgkWx-mQdkCJyUvve60SonqkQNtLlyAzlcHy80g&oe=62BB9B22";
+
+	var angelo = "https://scontent.fipn1-1.fna.fbcdn.net/v/t1.18169-9/734366_114131002115470_1819960177_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=de6eea&_nc_ohc=2vZVKrpoaMkAX8x_yZE&_nc_ht=scontent.fipn1-1.fna&oh=00_AT8VYb58ERWUt8j0zn_nQyO1HNFsamqYjTMZux1Nk_E_Iw&oe=62DA59A0";
+
+	var augusto = "https://scontent.fipn1-1.fna.fbcdn.net/v/t1.18169-9/406045_318555358251095_1549100994_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=ARZCmXu5VKUAX_i4l7k&_nc_ht=scontent.fipn1-1.fna&oh=00_AT-KYaGRb-sYEvrkr62faraNpcGhRR_bmtI7qziJAA7bdg&oe=62DCEB9F";
+
+	var daniel = "https://scontent.fipn1-1.fna.fbcdn.net/v/t1.18169-9/66003_300898783353391_602417188_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=de6eea&_nc_ohc=otzPdnQm8TUAX99R1N6&_nc_ht=scontent.fipn1-1.fna&oh=00_AT993fc7lkQlTz0KDGsX213Yk2cB4SGsbCeoY_Akgiye0w&oe=62DD2EC0";
+
+	var images = [breno, angelo, augusto];
+
+	var divImages = $('#images');
+	
+	function randomNumber(range, except){
+		var num = Math.floor(Math.random() * range);
+
+		return num == except ? randomNumber(range, except) : num;
+	}
+
+	for (var i = 21 - 1; i >= 0; i--) {
+		divImages.append("<img onmouseover='changeSource(" + i + ")' id='" + i + "' src='" + daniel + "'></img>");
+	}
+
+	function changeSource(id){
+		var imgTag = $('#' + id);
+
+		var rndNumb = randomNumber(3, imgTag.attr('alt'));
+
+		imgTag.attr("src",images[rndNumb]);
+		imgTag.attr("alt",rndNumb);
+	}
+
+	function play() {
+	  var audio = new Audio('https://www.myinstants.com/media/sounds/asus-yamete-kudasai_xpBHgiv.mp3');
+	  audio.play();
+	}
+
+
+</script>
